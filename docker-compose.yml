@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/php.dockerfile
+        working_dir: /var/www/html
+        volumes:
+            - ./:/var/www/html
+        links:
+            - mariadb
+
+    nginix:
+        build:
+            context: .
+            dockerfile: docker/nginx.dockerfile
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/html
+        depends_on:
+            -  mariadb
+            -  php
+
+    mariadb:
+        image: mariadb:latest
+        environment:
+            MARIADB_ROOT_PASSWORD: secret
+            MARIADB_DATABASE: adscraper
+            MARIADB_USER: scraper
+            MARIADB_PASSWORD: secret
+        volumes:
+            - scraper_mariadb_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        restart: always
+
+    artisan:
+        build:
+            context: .
+            dockerfile: docker/php.dockerfile
+        volumes:
+            - ./:/var/www/html
+        working_dir: /var/www/html
+        depends_on:
+            - mariadb
+        entrypoint: ["php", "/var/www/html/artisan"]
+
+volumes:
+    scraper_mariadb_data: {}
