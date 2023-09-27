@@ -19,3 +19,5 @@ RUN set -ex \
 RUN docker-php-ext-install pdo pdo_pgsql pdo_mysql
 
 CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
+
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
