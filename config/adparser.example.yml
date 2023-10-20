@@ -1,0 +1,14 @@
+config:
+  - key: jofogas
+    name: Jófogás
+    url: "https://www.jofogas.hu/magyarorszag"
+    recipients: [ "email@gemail.com" ]
+    filters: [ "ps4 hitman", "ps4 redemption" ]
+    exclusions: [ "xbox" ]
+
+  - key: vinted
+    name: Vinted
+    url: "https://www.vinted.hu/catalog"
+    recipients: [ "email@email.com" ]
+    filters: [ "ps4 hitman", "ps4 redemption" ]
+    exclusions: [ "xbox" ]
