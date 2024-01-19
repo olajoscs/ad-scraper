@@ -8,7 +8,10 @@ use App\Models\Config\Services\ConfigParser;
 
 class AdParser
 {
-    public function __construct(private readonly ConfigParser $configParser)
+    public function __construct(
+        private readonly ConfigParser $configParser,
+        private readonly \App\Models\Parser\AdParser $adParser,
+    )
     {
     }
 
@@ -17,6 +20,13 @@ class AdParser
     {
         $config = $this->configParser->parseConfig();
 
-        dd($config);
+        $this->adParser->parse($config);
+        $this->sendNotification();
+    }
+
+
+    private function sendNotification(): void
+    {
+
     }
 }

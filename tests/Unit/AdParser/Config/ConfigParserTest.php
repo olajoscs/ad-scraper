@@ -40,8 +40,8 @@ class ConfigParserTest extends TestCase
 
         $parsedConfig = $configParser->parseConfig();
 
-        $this->assertCount(1, $parsedConfig->siteConfigs);
-        $siteConfig = $parsedConfig->siteConfigs[0];
+        $this->assertCount(1, $parsedConfig->parsedSiteConfigs);
+        $siteConfig = $parsedConfig->parsedSiteConfigs[0];
 
         $this->assertSame($key, $siteConfig->key);
         $this->assertSame($name, $siteConfig->name);

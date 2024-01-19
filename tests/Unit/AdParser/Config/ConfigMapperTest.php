@@ -55,9 +55,9 @@ class ConfigMapperTest extends TestCase
 
         $parsedConfig = $this->configMapper->map($config);
 
-        $this->assertCount(2, $parsedConfig->siteConfigs);
-        $siteConfig1 = $parsedConfig->siteConfigs[0];
-        $siteConfig2 = $parsedConfig->siteConfigs[1];
+        $this->assertCount(2, $parsedConfig->parsedSiteConfigs);
+        $siteConfig1 = $parsedConfig->parsedSiteConfigs[0];
+        $siteConfig2 = $parsedConfig->parsedSiteConfigs[1];
 
         $this->assertSame($key1, $siteConfig1->key);
         $this->assertSame($name1, $siteConfig1->name);

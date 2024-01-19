@@ -9,11 +9,11 @@ class ParsedConfig
     /**
      * @var ParsedSiteConfig[]
      */
-    public readonly array $siteConfigs;
+    public readonly array $parsedSiteConfigs;
 
 
     public function __construct(array $siteConfigs)
     {
-        $this->siteConfigs = $siteConfigs;
+        $this->parsedSiteConfigs = $siteConfigs;
     }
 }
